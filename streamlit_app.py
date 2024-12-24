@@ -6,12 +6,8 @@ import requests
 # Write directly to the app
 st.title("Customise your smoothie :cup_with_straw:")
 st.write(
-    """Replace this example with your own code!
-    **And if you're new to Streamlit,** check
-    out our easy-to-follow guides at
-    [docs.streamlit.io](https://docs.streamlit.io).
-    """
-)
+   
+
 
 cnx = st.connection("snowflake")
 session= cnx.session()
@@ -54,3 +50,4 @@ st.text(smoothiefroot_response.json())
 
 # sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
+)
