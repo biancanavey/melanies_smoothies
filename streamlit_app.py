@@ -39,7 +39,8 @@ if ingredients_list:
 # New section to display smoothie fruit nutrition information
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
 if smoothiefroot_response.status_code == 200:
-    nutrition_data = smoothiefroot_response.json()
-    st.json(nutrition_data)  # Display the nutrition information in JSON format
+    # nutrition_data = smoothiefroot_response.json()
+    # st.json(nutrition_data)  # Display the nutrition information in JSON format
+    sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 else:
     st.error("Failed to fetch nutrition information.")
