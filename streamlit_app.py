@@ -25,7 +25,12 @@ ingredients_list = st.multiselect(
 # Check if any ingredients were selected
 if ingredients_list:
     ingredients_string = ' '.join(ingredients_list)
-
+    
+    for fruit_chosen in ingredients_list:
+        ingredients_string += fruit_chosen + ' '
+        smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+        sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+        
     # Prepare the SQL insert statement
     my_insert_stmt = f"""INSERT INTO smoothies.public.orders(ingredients, name_on_order)
                          VALUES ('{ingredients_string}', '{name_on_order}')"""
@@ -37,10 +42,10 @@ if ingredients_list:
         st.success('Your Smoothie is ordered, ' + name_on_order + '!', icon="✅")
 
 # New section to display smoothie fruit nutrition information
-smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-if smoothiefroot_response.status_code == 200:
-    # nutrition_data = smoothiefroot_response.json()
-    # st.json(nutrition_data)  # Display the nutrition information in JSON format
-    sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
-else:
-    st.error("Failed to fetch nutrition information.")
+# smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+# if smoothiefroot_response.status_code == 200:
+#     # nutrition_data = smoothiefroot_response.json()
+#     # st.json(nutrition_data)  # Display the nutrition information in JSON format
+#     sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+# else:
+#     st.error("Failed to fetch nutrition information.")
