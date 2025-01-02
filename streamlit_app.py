@@ -9,7 +9,7 @@ cnx = st.connection("snowflake")
 session = cnx.session()
 
 # Fetch the fruit options from the Snowflake table
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON')
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'),col('SEARCH_ON'))
 
 # Display the DataFrame in the Streamlit app
 st.dataframe(data=my_dataframe, use_container_width=True)
