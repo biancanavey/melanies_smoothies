@@ -6,9 +6,6 @@ import requests
 # Write directly to the app
 st.title("Customise your smoothie :cup_with_straw:")
 st.write(
-   
-
-
 cnx = st.connection("snowflake")
 session= cnx.session()
 
@@ -46,8 +43,7 @@ if time_to_insert:
 # New section to display smoothiefroot nutrition information
 
 smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response.json())
-
-# sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
+# st.text(smoothiefroot_response.json())
+sf_df = st.dataframe(data=smoothiefroot_response.json(), use_container_width=True)
 
 )
