@@ -24,7 +24,7 @@ st.write("The name on your smoothie will be:", name_on_order)
 
 # Multiselect for choosing ingredients
 ingredients_list = st.multiselect(
-    "Choose Up to 5 Ingredients:", my_dataframe['FRUIT_NAME'].tolist(), max_selections=5)
+    "Choose Up to 5 Ingredients:", my_dataframe['FRUIT_NAME'].tolist(),col('SEARCH_ON'), max_selections=5)
 
 # Check if any ingredients were selected
 if ingredients_list:
