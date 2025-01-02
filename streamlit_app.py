@@ -32,9 +32,10 @@ if ingredients_list:
 
         st.subheader(fruit_chosen + ' Nutrition Information')
         smoothiefroot_response = requests.get(f"https://my.smoothiefroot.com/api/fruit/{search_on}")
-        
+
         if smoothiefroot_response.status_code == 200:
             nutrition_data = smoothiefroot_response.json()
+            fv_df = st.dataframe(data=nutrition_data, use_container_width=True)  # Use the nutrition data for display
             st.json(nutrition_data)  # Display the nutrition information in JSON format
         else:
             st.error(f"Failed to fetch nutrition information for {fruit_chosen}.")
